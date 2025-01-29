@@ -42,7 +42,6 @@ export default function Register() {
 
                     <InputError message={errors.name} className="mt-2" />
                 </div>
-
                 <div className="mt-4">
                     <InputLabel htmlFor="email" value="Email" />
 
@@ -58,6 +57,22 @@ export default function Register() {
                     />
 
                     <InputError message={errors.email} className="mt-2" />
+                </div>
+                <div>
+                    <InputLabel htmlFor="phone" value="Phone" />
+
+                    <TextInput
+                        id="phone"
+                        name="phone"
+                        value={data.phone}
+                        className="mt-1 block w-full"
+                        autoComplete="phone"
+                        isFocused={true}
+                        onChange={(e) => setData('phone', e.target.value)}
+                        required
+                    />
+
+                    <InputError message={errors.phone} className="mt-2" />
                 </div>
 
                 <div className="mt-4">
