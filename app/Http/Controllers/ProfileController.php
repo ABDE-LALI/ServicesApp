@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\service;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -10,7 +11,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
-
 class ProfileController extends Controller
 {
     /**
@@ -38,6 +38,23 @@ class ProfileController extends Controller
         $request->user()->save();
 
         return Redirect::route('profile.edit');
+    }
+    
+    public function ShowServices()
+    {
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
+        $user = Auth::user();
+        if ($user && $user->isWorker()) {
+            $services = Service::where('workerId', $user->id)->get();
+    
+            return Inertia::render('WorkerServices', [
+                'services' => $services,
+            ]);
+        }
+    
+        return redirect('/')->with('error', 'Unauthorized');
     }
 
     /**

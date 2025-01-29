@@ -30,7 +30,7 @@ use Illuminate\Database\Seeder;
                 [
                     'name' => 'Car Wash',
                     'description' => 'Thorough exterior car cleaning service.',
-                    'workerId' => 3, // Assumes a user with id 3 exists in the users table
+                    'workerId' => 1, // Assumes a user with id 3 exists in the users table
                     'sercatId' => 3, // Assumes a category with id 3 exists in the categories table
                     'serviceRaiting' => 5,
                     'created_at' => now(),
