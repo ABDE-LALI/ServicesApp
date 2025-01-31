@@ -40,22 +40,22 @@ class ProfileController extends Controller
         return Redirect::route('profile.edit');
     }
     
-    public function ShowServices()
-    {
-        if (!Auth::check()) {
-            return redirect()->route('login');
-        }
-        $user = Auth::user();
-        if ($user && $user->isWorker()) {
-            $services = Service::where('workerId', $user->id)->get();
+    // public function ShowServices()
+    // {
+    //     if (!Auth::check()) {
+    //         return redirect()->route('login');
+    //     }
+    //     $user = Auth::user();
+    //     if ($user && $user->isWorker()) {
+    //         $services = Service::where('workerId', $user->id)->get();
     
-            return Inertia::render('WorkerServices', [
-                'services' => $services,
-            ]);
-        }
+    //         return Inertia::render('WorkerServices', [
+    //             'services' => $services,
+    //         ]);
+    //     }
     
-        return redirect('/')->with('error', 'Unauthorized');
-    }
+    //     return redirect('/')->with('error', 'Unauthorized');
+    // }
 
     /**
      * Delete the user's account.
