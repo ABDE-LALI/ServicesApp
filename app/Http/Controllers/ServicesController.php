@@ -13,22 +13,22 @@ use Inertia\Inertia;
         // dd($services);
         return Inertia::render('AllServices', ['services'=>$services, 'showserv'=>true]);
     }
-    public function ShowServices()
-    {
-        if (!auth()->check()) {
-            return redirect('/');
-        }
-        $user = auth()->user();
-        if ($user && $user->isWorker()) {
-            $services = Service::where('workerId', $user->id)->get();
+    // public function ShowServices()
+    // {
+    //     if (!auth()->check()) {
+    //         return redirect('/');
+    //     }
+    //     $user = auth()->user();
+    //     if ($user && $user->isWorker()) {
+    //         $services = Service::where('workerId', $user->id)->get();
     
-            return Inertia::render('WorkerServices', [
-                'services' => $services,
-            ]);
-        }
+    //         return Inertia::render('WorkerServices', [
+    //             'services' => $services,
+    //         ]);
+    //     }
     
-        return redirect('/')->with('error', 'Unauthorized');
-    }
+    //     return redirect('/')->with('error', 'Unauthorized');
+    // }
     public function ShowServiceDetailes($id){
         $service = service::find($id);
         $worker = User::find($service->workerId); 
@@ -36,6 +36,6 @@ use Inertia\Inertia;
     }
     
     public function DeleteService(){
-        
+
     }
 }
