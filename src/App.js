@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useState } from "react";
+import { Suspense } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Login from "./components/Login";
+import Employee from "./components/Employee";
+import Manager from "./components/Manager";
+
 
 function App() {
+  const [isConnected, setIsConnected] = useState({ status: false, role: "", id: null });
+
+  console.log(isConnected);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Login setIsConnected={setIsConnected} />} />
+          <Route
+            path="/employee/:id"
+            element={<Employee setIsConnected={setIsConnected} />}
+          />
+          <Route
+            path="/manager/:id"
+            element={<Manager setIsConnected={setIsConnected} />}
+          />
+        </Routes>
+    </BrowserRouter>
   );
 }
 

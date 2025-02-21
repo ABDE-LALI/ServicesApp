@@ -1,0 +1,62 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "role": "manager",
+            "name": "manager1",
+            "email": "manager1@gmail.com",
+            "password": "manager111"
+        },
+        {
+            "id": 2,
+            "role": "manager",
+            "name": "manager2",
+            "email": "manager2@gmail.com",
+            "password": "manager222"
+        },
+        {
+            "id": 3,
+            "role": "employee",
+            "name": "employee1",
+            "email": "employee1@gmail.com",
+            "password": "employee111",
+            "managerId": 1
+        },
+        {
+            "id": 4,
+            "role": "employee",
+            "name": "employee2",
+            "email": "employee2@gmail.com",
+            "password": "employee222",
+            "managerId": 1
+        },
+        {
+            "id": 5,
+            "role": "employee",
+            "name": "employee3",
+            "email": "employee3@gmail.com",
+            "password": "employee333",
+            "managerId": 2
+        },
+        {
+            "id": 6,
+            "role": "employee",
+            "name": "employee4",
+            "email": "employee4@gmail.com",
+            "password": "employee444",
+            "managerId": 2
+        }
+    ],
+    "leaveRequests": [
+        {
+            "id": 1,
+            "employeeId": 3,
+            "employeeName": "employee1",
+            "managerId": 1,
+            "status": "pending",
+            "startDate": "2023-10-01",
+            "endDate": "2023-10-05"
+        }
+
+    ]
+}
